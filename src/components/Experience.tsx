@@ -1,5 +1,3 @@
-import React from "react";
-
 const educations = [
   {
     id: 1,
@@ -55,7 +53,7 @@ export default function Experience() {
           <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gray-700"></div>
 
           <div className="space-y-12">
-            {educations.map((edu, index) => (
+            {educations.map((edu) => (
               <div key={edu.id} className="relative pl-20">
                 <div className="absolute left-0 flex items-center justify-center">
                   {edu.status === "completed" ? (
@@ -135,7 +133,7 @@ export default function Experience() {
             Work Experience
           </h2>
           <div className="space-y-12">
-            {workExp.map((exp, index) => (
+            {workExp.map((exp) => (
               <div key={exp.id} className="relative pl-20">
                 <div className="absolute left-0 flex items-center justify-center">
                   {exp.status === "completed" ? (
