@@ -79,15 +79,15 @@ export default function SkillSet() {
         }
       `}</style>
 
-      <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+      <div className="mx-auto max-w-2xl px-4 pt-1 pb-4 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
         <div className="mt-6 overflow-hidden relative">
           <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-gray-900 to-transparent z-10 pointer-events-none"></div>
           <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-gray-900 to-transparent z-10 pointer-events-none"></div>
-          <div className="flex gap-6 animate-scroll">
+          <div className="flex gap-2 lg:gap-6 animate-scroll">
             {duplicatedProducts.map((product, index) => (
               <div
                 key={`${product.id}-${index}`}
-                className="group relative rounded-2xl border border-gray-600 p-5 flex-shrink-0 w-32"
+                className="group relative rounded-2xl border border-gray-600 p-3 lg:p-5 flex-shrink-0 w-18 lg:w-32"
               >
                 <img
                   alt={product.name}

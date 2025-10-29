@@ -48,15 +48,32 @@ function About() {
 
   return (
     <>
-      <div className="relative bg-gray-900 overflow-hidden">
-        <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8 text-white flex justify-between">
+      <div className="relative bg-gray-900 overflow-hidden" id="about">
+        <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8 text-white flex flex-col lg:flex-row-reverse justify-between items-center gap-8 lg:gap-12">
           <div className="absolute top-20 left-10 w-32 h-32 border-2 border-purple-500 rounded-lg rotate-12 opacity-20"></div>
           <div className="absolute bottom-20 right-20 w-40 h-40 border-2 border-pink-500 rounded-full opacity-20"></div>
           <div className="absolute top-1/2 left-1/3 w-24 h-24 border-2 border-yellow-500 rotate-45 opacity-20"></div>
 
+          <div
+            ref={profileRef}
+            className={`profile-picture flex mx-auto items-center justify-center transition-all duration-1000 ease-out transform ${
+              isVisible
+                ? "opacity-100 translate-x-0"
+                : "opacity-0 translate-x-20"
+            }`}
+          >
+            <div className="w-48 h-48 lg:w-35 lg:h-35 lg:scale-200">
+              <img
+                src={Profile}
+                alt="Profile"
+                className="rounded-full object-cover w-full h-full object-top"
+              />
+            </div>
+          </div>
+
           <div className="">
             <h2 className="title-font text-5xl">About Me</h2>
-            <p className="text-lg pt-5 w-150">
+            <p className="text-lg pt-5 max-w-full lg:w-150">
               Lorem ipsum dolor, sit amet consectetur adipisicing elit.
               Inventore reprehenderit sed animi rerum eligendi deleniti officia
               quae ducimus error! Recusandae, consectetur! Modi officia hic
@@ -79,23 +96,6 @@ function About() {
                   ))}
                 </div>
               </div>
-            </div>
-          </div>
-
-          <div
-            ref={profileRef}
-            className={`profile-picture flex items-center justify-center mx-auto transition-all duration-1000 ease-out transform ${
-              isVisible
-                ? "opacity-100 translate-x-0"
-                : "opacity-0 translate-x-20"
-            }`}
-          >
-            <div className="w-35 h-35 scale-200">
-              <img
-                src={Profile}
-                alt="Profile"
-                className="rounded-full object-cover w-full h-full object-top"
-              />
             </div>
           </div>
         </div>

@@ -49,7 +49,7 @@ export default function Contact() {
   };
 
   return (
-    <div className="isolate bg-gray-900 px-6 py-24 sm:py-32 lg:px-8">
+    <div className="isolate bg-gray-900">
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8 text-white flex flex-col lg:flex-row justify-between gap-12">
         <form
           action="https://formspree.io/f/xpwygzqk"

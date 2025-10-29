@@ -74,7 +74,6 @@ export default function Example() {
       >
         <div className="flex lg:flex-1">
           <a href="#" className="-m-1.5 p-1.5">
-            <span className="sr-only">Name</span>
             <h2 className="font-bold text-4xl text-white title-font">ISN</h2>
           </a>
         </div>
@@ -137,11 +136,8 @@ export default function Example() {
           <a href="#" className="text-md text-white">
             Home
           </a>
-          <a href="#" className="text-md text-white">
+          <a href="#about" className="text-md text-white">
             About
-          </a>
-          <a href="#" className="text-md text-white">
-            Services
           </a>
           <a href="#" className="text-md text-white">
             Portfolio
@@ -165,16 +161,12 @@ export default function Example() {
         className="lg:hidden"
       >
         <div className="fixed inset-0 z-50" />
-        <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-gray-900 p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-100/10">
+        <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-gray-900 text-white p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-100/10">
           <div className="flex items-center justify-between">
             <a href="#" className="-m-1.5 p-1.5">
-              <span className="sr-only">Your Company</span>
-              <img
-                alt=""
-                src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
-                className="h-8 w-auto"
-              />
+              <h2 className="font-bold text-4xl text-white title-font">ISN</h2>
             </a>
+
             <button
               type="button"
               onClick={() => setMobileMenuOpen(false)}
@@ -187,44 +179,29 @@ export default function Example() {
           <div className="mt-6 flow-root">
             <div className="-my-6 divide-y divide-white/10">
               <div className="space-y-2 py-6">
-                <Disclosure as="div" className="-mx-3">
-                  <DisclosureButton className="group flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base/7 f hover:bg-white/5">
-                    Product
-                    <ChevronDownIcon
-                      aria-hidden="true"
-                      className="size-5 flex-none group-data-open:rotate-180"
-                    />
-                  </DisclosureButton>
-                  <DisclosurePanel className="mt-2 space-y-2">
-                    {[...products, ...callsToAction].map((item) => (
-                      <DisclosureButton
-                        key={item.name}
-                        as="a"
-                        href={item.href}
-                        className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 f hover:bg-white/5"
-                      >
-                        {item.name}
-                      </DisclosureButton>
-                    ))}
-                  </DisclosurePanel>
-                </Disclosure>
                 <a
                   href="#"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base/7 f hover:bg-white/5"
                 >
-                  Features
+                  Home
                 </a>
                 <a
                   href="#"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base/7 f hover:bg-white/5"
                 >
-                  Marketplace
+                  About
                 </a>
                 <a
                   href="#"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base/7 f hover:bg-white/5"
                 >
-                  Company
+                  Portfolio
+                </a>
+                <a
+                  href="#"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base/7 f hover:bg-white/5"
+                >
+                  Contact
                 </a>
               </div>
               <div className="py-6">

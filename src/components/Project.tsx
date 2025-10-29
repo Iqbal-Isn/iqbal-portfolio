@@ -1,9 +1,12 @@
+import lokerkotakita from "../../public/img/lokerkotakita.png";
+import nontonin from "../../public/img/Nontonin.png";
+import portfolio from "../../public/img/portfolio.png";
+
 const projects = [
   {
     id: 1,
     name: "Lokerkotakita",
-    imageSrc:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800",
+    imageSrc: `${lokerkotakita}`,
     description: "Job portal website for local communities",
     technologies: [
       "https://img.icons8.com/?size=100&id=1489&format=png&color=FFFFFF",
@@ -15,28 +18,27 @@ const projects = [
   {
     id: 2,
     name: "Nontonin",
-    imageSrc:
-      "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800",
+    imageSrc: `${nontonin}`,
     description: "Modern e-commerce solution with payment integration",
     technologies: [
       "https://img.icons8.com/?size=100&id=047WZAFDnkVp&format=png&color=FFFFFF",
       "https://img.icons8.com/?size=100&id=UpSCHTwpywad&format=png&color=FFFFFF",
       "https://img.icons8.com/?size=100&id=8864&format=png&color=FFFFFF",
     ],
-    githubUrl: "https://github.com/username/ecommerce",
-    liveUrl: "https://ecommerce-demo.com",
+    githubUrl: "https://github.com/Iqbal-Isn/nontonin",
+    liveUrl: "https://nontonin.online",
   },
   {
     id: 3,
     name: "Portfolio Website",
-    imageSrc:
-      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800",
+    imageSrc: `${portfolio}`,
     description: "Personal portfolio with modern design",
     technologies: [
       "https://img.icons8.com/?size=100&id=047WZAFDnkVp&format=png&color=FFFFFF",
       "https://img.icons8.com/?size=100&id=UpSCHTwpywad&format=png&color=FFFFFF",
     ],
-    liveUrl: "https://myportfolio.com",
+    githubUrl: "https://github.com/Iqbal-Isn/iqbal-portfolio",
+    liveUrl: "https://iqbal-portfolio-53mhmfwmn-iqbalisns-projects.vercel.app/",
   },
 ];
 

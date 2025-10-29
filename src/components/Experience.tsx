@@ -28,8 +28,7 @@ const workExp = [
     major: "Admin Unit (Fulltime)",
     period: "Agustus 2023 – Februari 2025",
     gpa: "-",
-    description:
-      "Bertanggung jawab dalam pengelolaan administrasi dan koordinasi operasional kemitraan peternakan ayam, mulai dari proses KYC peternak, distribusi pakan dan OVK, hingga panen. Melakukan input dan rekap data produksi ke sistem ERP serta spreadsheet, menyusun laporan mingguan dan bulanan, dan memastikan kelancaran proses pencairan hasil pemeliharaan. Selain itu, berkoordinasi dengan tim lapangan dan kepala unit untuk memantau performa ayam, pelaksanaan kontrak, serta jaminan peternak selama masa kemitraan.",
+    description: "Microsoft Office, ERP Administration, Google Sheet",
     status: "completed",
   },
   {
@@ -38,8 +37,7 @@ const workExp = [
     major: "Junior Front End Developer (Freelance)",
     period: "Desember 2022 – Februari 2023",
     gpa: "-",
-    description:
-      "Bekerja sama dengan tim dalam menyelesaikan tugas yang disepakati bersama. Memastikan halaman web responsif di setiap device, mengoptimalkan pengalaman pengguna, membangun dan memelihara website, serta melakukan styling website sesuai dengan desain UI yang diberikan.",
+    description: "HTML, CSS, Javascript, ReactJS",
     status: "completed",
   },
 ];
@@ -103,7 +101,7 @@ export default function Experience() {
                     </div>
                   </div>
 
-                  <p className="text-gray-200 text-lg leading-relaxed">
+                  <p className="text-gray-200 text-lg leading-relaxed sm:block hidden">
                     {edu.description}
                   </p>
 
@@ -183,7 +181,7 @@ export default function Experience() {
                     </div>
                   </div>
 
-                  <p className="text-gray-200 text-lg leading-relaxed">
+                  <p className="text-gray-200 text-lg leading-relaxed hidden sm:block">
                     {exp.description}
                   </p>
 
