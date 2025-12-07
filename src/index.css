@@ -1,11 +1,84 @@
 @import "tailwindcss";
 
-* {
-  font-family: "Open Sans", sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Light Mode (Linear-ish Light) */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f7f8f8;
+  --text-primary: #18181b;
+  --text-secondary: #71717a;
+  --border-subtle: #e4e4e7;
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(228, 228, 231, 0.5);
+  --primary-accent: #5e6ad2; /* Linear purple-ish blue */
+}
+
+/* Dark Mode (Linear Dark) */
+[data-theme="dark"] {
+  --bg-primary: #0f1012; /* Very dark grey, almost black */
+  --bg-secondary: #1a1b1e;
+  --text-primary: #ededef;
+  --text-secondary: #a1a1aa;
+  --border-subtle: #27272a;
+  --glass-bg: rgba(15, 16, 18, 0.7);
+  --glass-border: rgba(39, 39, 42, 0.5);
+  --primary-accent: #5e6ad2;
+}
+*{
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-subtle);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
 }
 
 .title-font {
-  font-family: "BBH Sans Bogle", sans-serif;
-  font-weight: 400;
-  font-style: normal;
+  font-family: "Inter", sans-serif; /* Unifying font for cleaner look */
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.card-hover {
+  transition: all 0.2s ease-in-out;
+}
+.card-hover:hover {
+  transform: translateY(-2px);
+  border-color: var(--text-secondary);
+}
+
+/* Global Tech Icon Styling */
+.tech-icon {
+  transition: filter 0.3s ease, opacity 0.3s ease;
+  /* Optional: grayscale by default in light mode if desired, but user removed inline style, so we leave it raw */
+}
+[data-theme="dark"] .tech-icon {
+  filter: invert(1);
 }

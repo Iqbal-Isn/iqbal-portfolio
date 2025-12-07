@@ -1,50 +1,48 @@
 "use client";
 
-export default function Example() {
+export default function Hero() {
   return (
-    <div className="bg-gray-900 relative overflow-hidden">
+    <div className="relative isolate overflow-hidden bg-[var(--bg-primary)] transition-colors duration-300">
       <style>{`
         .bg-dot-pattern {
-          background-image: radial-gradient(rgba(139, 92, 246, 0.4) 1px, transparent 1px);
-          background-size: 20px 20px;
+          background-image: radial-gradient(var(--text-secondary) 1px, transparent 1px);
+          background-size: 24px 24px;
         }
       `}</style>
+      
+      {/* Background Effects */}
+      <div className="absolute inset-0 -z-10 h-full w-full bg-dot-pattern [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_70%)] opacity-20"></div>
+      <div className="absolute top-0 right-0 -z-10 h-[500px] w-[500px] bg-[var(--primary-accent)] opacity-10 blur-[120px] rounded-full"></div>
+      <div className="absolute bottom-0 left-0 -z-10 h-[500px] w-[500px] bg-purple-500 opacity-10 blur-[120px] rounded-full"></div>
 
-      {/* Dot Pattern Background */}
-      <div className="absolute inset-0 bg-dot-pattern opacity-30"></div>
-
-      {/* Gradient Overlay Top */}
-      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-gray-900 to-transparent z-10 pointer-events-none"></div>
-
-      {/* Gradient Overlay Bottom */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-900 to-transparent z-10 pointer-events-none"></div>
-
-      <div className="relative isolate px-6 pt-14 pb-10 lg:px-8 z-20">
-        <div className="mx-auto max-w-2xl">
-          <div className="hidden sm:mb-8 sm:flex sm:justify-center">
-            <div className="relative text-md rounded-full px-6 py-3 text-blue-500 bg-blue-100">
-              AVAILABLE FOR WORK
+      <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
+        <div className="mx-auto max-w-3xl text-center">
+          <div className="mb-8 flex justify-center">
+            <div className="relative rounded-full px-4 py-1.5 text-sm leading-6 text-[var(--text-secondary)] ring-1 ring-[var(--border-subtle)] hover:ring-[var(--text-secondary)] transition-all bg-[var(--bg-secondary)] backdrop-blur-sm">
+              <span className="text-[var(--primary-accent)] mr-2">●</span>
+              Available for new projects
             </div>
           </div>
-          <div className="text-center">
-            <h1 className="text-5xl title-font text-balance text-white sm:text-8xl">
-              IQBAL ISNAENI HERLAMBANG
-            </h1>
-            <p className="mt-8 text-lg font-normal text-gray-200 sm:text-md">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus
-              iste reprehenderit ratione, animi cum quasi excepturi.
-            </p>
-            <div className="mt-10 flex items-center justify-center gap-x-8">
-              <a
-                href="#"
-                className="rounded-full bg-blue-500 px-9 py-5 text-md font-semibold text-white shadow-xs hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
-              >
-                Hire Me
-              </a>
-              <a href="#" className="text-md font-semibold text-white">
-                Download CV <span aria-hidden="true">→</span>
-              </a>
-            </div>
+          
+          <h1 className="text-4xl font-bold tracking-tight text-[var(--text-primary)] sm:text-6xl lg:text-7xl mb-6 sm:mb-8">
+            Building digital products, <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--text-primary)] to-[var(--text-secondary)]">one pixel at a time.</span>
+          </h1>
+          
+          <p className="mt-4 sm:mt-6 text-base sm:text-lg leading-7 sm:leading-8 text-[var(--text-secondary)] max-w-xl mx-auto">
+            I'm Iqbal Isnaeni Herlambang, a creative developer focused on building high-quality, user-centric web applications.
+          </p>
+          
+          <div className="mt-10 flex items-center justify-center gap-x-6">
+            <a
+              href="#contact"
+              className="rounded-full bg-[var(--text-primary)] px-8 py-3.5 text-sm font-semibold text-[var(--bg-primary)] shadow-sm hover:bg-[var(--text-secondary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--text-primary)] transition-all"
+            >
+              Hire Me
+            </a>
+            <a href="#about" className="text-sm font-semibold leading-6 text-[var(--text-primary)] flex items-center gap-2 group">
+              Learn more <span aria-hidden="true" className="group-hover:translate-x-1 transition-transform">→</span>
+            </a>
           </div>
         </div>
       </div>

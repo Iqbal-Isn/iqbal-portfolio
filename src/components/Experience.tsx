@@ -5,8 +5,7 @@ const educations = [
     major: "S1 Sistem Informasi",
     period: "2025 - 2029",
     gpa: "-",
-    description:
-      "Focus on Software Engineering, Web Development, and Database Management",
+    description: "Focus on Software Engineering, Web Development, and Database Management",
     status: "progress",
   },
   {
@@ -15,8 +14,7 @@ const educations = [
     major: "Rekayasa Perangkat Lunak",
     period: "2019 - 2022",
     gpa: "85,07/100",
-    description:
-      "Sistem Komunikasi Digital, Pemrograman Beriorientasi Objek, dan Basis Data",
+    description: "Sistem Komunikasi Digital, Pemrograman Beriorientasi Objek, dan Basis Data",
     status: "completed",
   },
 ];
@@ -26,7 +24,7 @@ const workExp = [
     id: 1,
     institution: "PT. Integrasi Teknologi Unggas",
     major: "Admin Unit (Fulltime)",
-    period: "Agustus 2023 – Februari 2025",
+    period: "Agst 2023 – Feb 2025",
     gpa: "-",
     description: "Microsoft Office, ERP Administration, Google Sheet",
     status: "completed",
@@ -35,7 +33,7 @@ const workExp = [
     id: 2,
     institution: "Ssebowa",
     major: "Junior Front End Developer (Freelance)",
-    period: "Desember 2022 – Februari 2023",
+    period: "Des 2022 – Feb 2023",
     gpa: "-",
     description: "HTML, CSS, Javascript, ReactJS",
     status: "completed",
@@ -44,169 +42,88 @@ const workExp = [
 
 export default function Experience() {
   return (
-    <div className="bg-gray-900 text-white">
-      <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8 text-white">
-        <h2 className="title-font text-5xl text-center mb-10">Education</h2>
-        <div className="relative">
-          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gray-700"></div>
-
-          <div className="space-y-12">
-            {educations.map((edu) => (
-              <div key={edu.id} className="relative pl-20">
-                <div className="absolute left-0 flex items-center justify-center">
-                  {edu.status === "completed" ? (
-                    <div className="w-16 h-16 rounded-full bg-blue-500 flex items-center justify-center ring-4 ring-gray-900">
-                      <svg
-                        className="w-8 h-8 text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={3}
-                          d="M5 13l4 4L19 7"
-                        />
-                      </svg>
-                    </div>
-                  ) : (
-                    <div className="relative w-16 h-16 rounded-full border-4 border-blue-500 flex items-center justify-center ring-4 ring-gray-900 bg-gray-900">
-                      <div className="w-3 h-3 rounded-full bg-blue-500"></div>
-                      <div className="absolute inset-0 rounded-full border-4 border-blue-500 animate-ping opacity-20"></div>
-                    </div>
-                  )}
-                </div>
-
-                <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-xl p-6 hover:border-blue-500 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20 ml-5">
-                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-3">
-                    <div className="flex-1">
-                      <h3 className="text-2xl font-bold text-white mb-1">
-                        {edu.institution}
-                      </h3>
-                      <p className="text-blue-400 font-semibold text-lg mb-2">
-                        {edu.major}
-                      </p>
-                    </div>
-                    <div className="text-left sm:text-right mt-2 sm:mt-0">
-                      <span className="inline-block px-3 py-1 rounded-full text-md font-semibold bg-blue-500/20 text-blue-400 mb-2">
-                        {edu.period}
-                      </span>
-                      {edu.gpa !== "-" && (
-                        <p className="text-gray-300">
-                          <span className="font-semibold text-white">GPA:</span>{" "}
-                          {edu.gpa}
-                        </p>
-                      )}
-                    </div>
+    <div className="bg-[var(--bg-primary)] py-24 sm:py-32">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          
+          {/* Education Section */}
+          <div>
+            <h2 className="text-3xl font-bold tracking-tight text-[var(--text-primary)] mb-12 flex items-center gap-3">
+              Education
+            </h2>
+            <div className="relative border-l border-[var(--border-subtle)] ml-3 space-y-12 pl-10 pb-4">
+              {educations.map((edu) => (
+                <div key={edu.id} className="relative group">
+                  <span className="absolute -left-[45px] top-1 h-6 w-6 rounded-full border-4 border-[var(--bg-primary)] bg-[var(--primary-accent)]"></span>
+                  
+                  <div className="flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:justify-between mb-2">
+                    <h3 className="text-xl font-bold text-[var(--text-primary)] group-hover:text-[var(--primary-accent)] transition-colors inline-flex items-center gap-2">
+                       {edu.institution}
+                    </h3>
+                    <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-[var(--bg-secondary)] text-[var(--text-secondary)] border border-[var(--border-subtle)]">
+                      {edu.period}
+                    </span>
                   </div>
-
-                  <p className="text-gray-200 text-lg leading-relaxed sm:block hidden">
+                  
+                  <p className="text-[var(--text-primary)] font-medium text-md mb-2">
+                    {edu.major}
+                  </p>
+                  
+                  <p className="text-[var(--text-secondary)] text-sm leading-relaxed mb-4">
                     {edu.description}
                   </p>
-
+                  
+                  {edu.gpa !== "-" && (
+                    <p className="text-xs text-[var(--text-secondary)] bg-[var(--bg-secondary)] inline-block px-2 py-1 rounded">
+                      GPA: {edu.gpa}
+                    </p>
+                  )}
+                  
                   {edu.status === "progress" && (
-                    <div className="mt-4 flex items-center gap-2">
-                      <div className="flex gap-1">
-                        <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></div>
-                        <div
-                          className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"
-                          style={{ animationDelay: "0.2s" }}
-                        ></div>
-                        <div
-                          className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"
-                          style={{ animationDelay: "0.4s" }}
-                        ></div>
-                      </div>
-                      <span className="text-blue-400 text-sm font-medium">
-                        In Progress
+                    <div className="mt-3 flex items-center gap-2">
+                      <span className="relative flex h-2.5 w-2.5">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
                       </span>
+                      <span className="text-xs font-medium text-[var(--text-secondary)]">Currently Studying</span>
                     </div>
                   )}
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-          <h2 className="title-font text-5xl text-center m-15">
-            Work Experience
-          </h2>
-          <div className="space-y-12">
-            {workExp.map((exp) => (
-              <div key={exp.id} className="relative pl-20">
-                <div className="absolute left-0 flex items-center justify-center">
-                  {exp.status === "completed" ? (
-                    <div className="w-16 h-16 rounded-full bg-blue-500 flex items-center justify-center ring-4 ring-gray-900">
-                      <svg
-                        className="w-8 h-8 text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={3}
-                          d="M5 13l4 4L19 7"
-                        />
-                      </svg>
-                    </div>
-                  ) : (
-                    <div className="relative w-16 h-16 rounded-full border-4 border-blue-500 flex items-center justify-center ring-4 ring-gray-900 bg-gray-900">
-                      <div className="w-3 h-3 rounded-full bg-blue-500"></div>
-                      <div className="absolute inset-0 rounded-full border-4 border-blue-500 animate-ping opacity-20"></div>
-                    </div>
-                  )}
-                </div>
 
-                <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-xl p-6 hover:border-blue-500 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20 ml-5">
-                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-3">
-                    <div className="flex-1">
-                      <h3 className="text-2xl font-bold text-white mb-1">
-                        {exp.institution}
-                      </h3>
-                      <p className="text-blue-400 font-semibold text-lg mb-2">
-                        {exp.major}
-                      </p>
-                    </div>
-                    <div className="text-left sm:text-right mt-2 sm:mt-0">
-                      <span className="inline-block px-3 py-1 rounded-full text-md font-semibold bg-blue-500/20 text-blue-400 mb-2">
-                        {exp.period}
-                      </span>
-                      {exp.gpa !== "-" && (
-                        <p className="text-gray-300">
-                          <span className="font-semibold text-white">GPA:</span>{" "}
-                          {exp.gpa}
-                        </p>
-                      )}
-                    </div>
+          {/* Work Experience Section */}
+          <div>
+            <h2 className="text-3xl font-bold tracking-tight text-[var(--text-primary)] mb-12 flex items-center gap-3">
+              Work Experience
+            </h2>
+            <div className="relative border-l border-[var(--border-subtle)] ml-3 space-y-12 pl-10 pb-4">
+              {workExp.map((exp) => (
+                <div key={exp.id} className="relative group">
+                   <span className="absolute -left-[45px] top-1 h-6 w-6 rounded-full border-4 border-[var(--bg-primary)] bg-[var(--text-secondary)] group-hover:bg-[var(--primary-accent)] transition-colors"></span>
+                  
+                  <div className="flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:justify-between mb-2">
+                    <h3 className="text-xl font-bold text-[var(--text-primary)] group-hover:text-[var(--primary-accent)] transition-colors">
+                      {exp.institution}
+                    </h3>
+                    <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-[var(--bg-secondary)] text-[var(--text-secondary)] border border-[var(--border-subtle)]">
+                      {exp.period}
+                    </span>
                   </div>
-
-                  <p className="text-gray-200 text-lg leading-relaxed hidden sm:block">
+                  
+                  <p className="text-[var(--text-primary)] font-medium text-md mb-2">
+                    {exp.major}
+                  </p>
+                  
+                  <p className="text-[var(--text-secondary)] text-sm leading-relaxed">
                     {exp.description}
                   </p>
-
-                  {exp.status === "progress" && (
-                    <div className="mt-4 flex items-center gap-2">
-                      <div className="flex gap-1">
-                        <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></div>
-                        <div
-                          className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"
-                          style={{ animationDelay: "0.2s" }}
-                        ></div>
-                        <div
-                          className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"
-                          style={{ animationDelay: "0.4s" }}
-                        ></div>
-                      </div>
-                      <span className="text-blue-400 text-sm font-medium">
-                        In Progress
-                      </span>
-                    </div>
-                  )}
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
+
         </div>
       </div>
     </div>
