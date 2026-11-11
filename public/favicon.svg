@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" fill="none">
+  <!-- Hard Shadow -->
+  <circle cx="18" cy="18" r="14" fill="#111111" />
+  
+  <!-- Main Badge Circle -->
+  <circle cx="16" cy="16" r="14" fill="#00D67E" stroke="#111111" stroke-width="1.5" />
+  
+  <!-- White Lightning Bolt Icon -->
+  <g transform="translate(4, 4)">
+    <path d="M13.5 2L5 13.5h6.5L10.5 22L19 10.5h-6.5L13.5 2z" fill="#FFFFFF" />
+  </g>
+</svg>

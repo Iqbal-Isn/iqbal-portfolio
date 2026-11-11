@@ -1,111 +1,148 @@
-"use client";
-
-import { useState } from "react";
-import { Dialog, DialogPanel } from "@headlessui/react";
+import { useState, useEffect } from "react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import ThemeToggle from "./ThemeToggle";
 
 const navigation = [
-  { name: "Home", href: "#" },
+  { name: "Home", href: "#home" },
   { name: "About", href: "#about" },
-  { name: "Portfolio", href: "#portfolio" },
+  { name: "Services", href: "#services" },
+  { name: "Projects", href: "#projects" },
   { name: "Contact", href: "#contact" },
 ];
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeNav, setActiveNav] = useState("Home");
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 16);
+
+      const sections = navigation.map((item) => ({
+        name: item.name,
+        el: document.querySelector(item.href),
+      }));
+
+      const scrollPosition = window.scrollY + 180;
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = sections[i];
+        if (
+          section.el &&
+          (section.el as HTMLElement).offsetTop <= scrollPosition
+        ) {
+          setActiveNav(section.name);
+          break;
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 glass">
+    <header
+      className={`sticky top-0 z-50 bg-white transition-all duration-200 ${
+        scrolled ? "border-b border-[#E4E4E7] py-3.5" : "py-5"
+      }`}
+    >
       <nav
         aria-label="Global"
-        className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
+        className="mx-auto flex max-w-[1200px] items-center justify-between px-6 lg:px-12"
       >
-        <div className="flex lg:flex-1">
-          <a href="#" className="-m-1.5 p-1.5">
-            <h2 className="font-bold text-2xl tracking-tighter text-[var(--text-primary)]">ISN.</h2>
-          </a>
+        {/* Brand Logo */}
+        <a
+          href="#home"
+          onClick={() => setActiveNav("Home")}
+          className="inline-flex items-center gap-3 group"
+        >
+          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#00D67E] border-[1.5px] border-[#111111] shadow-[2px_2px_0px_#111111] transition-transform group-hover:-translate-y-0.5">
+            <svg
+              className="h-5 w-5 text-white"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path d="M13.5 2L5 13.5h6.5L10.5 22L19 10.5h-6.5L13.5 2z" />
+            </svg>
+          </span>
+          <span className="text-xl font-bold tracking-tight text-[#0D0D0D]">
+            Iqbal
+          </span>
+        </a>
+
+        {/* Desktop Nav Links */}
+        <div className="hidden md:flex md:items-center md:gap-x-8">
+          {navigation.map((item) => {
+            const isActive = activeNav === item.name;
+            return (
+              <a
+                key={item.name}
+                href={item.href}
+                onClick={() => setActiveNav(item.name)}
+                className={`inline-flex items-center text-sm transition-colors ${
+                  isActive
+                    ? "font-bold text-[#0D0D0D]"
+                    : "font-medium text-[#666666] hover:text-[#0D0D0D]"
+                }`}
+              >
+                {isActive && (
+                  <span className="mr-2 h-1.5 w-1.5 rounded-full bg-[#00D67E]" />
+                )}
+                {item.name}
+              </a>
+            );
+          })}
         </div>
-        <div className="flex lg:hidden items-center">
-          <div className="mr-2">
-             <ThemeToggle />
-          </div>
+
+        {/* Mobile Hamburger Button */}
+        <div className="flex md:hidden">
           <button
             type="button"
-            onClick={() => setMobileMenuOpen(true)}
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-[var(--text-secondary)]"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="inline-flex items-center justify-center border-[1.5px] border-[#111111] bg-white p-2 text-[#0D0D0D] shadow-[2px_2px_0px_#00D67E]"
+            aria-expanded={mobileMenuOpen}
           >
-            <span className="sr-only">Open main menu</span>
-            <Bars3Icon aria-hidden="true" className="size-6" />
+            <span className="sr-only">Toggle navigation menu</span>
+            {mobileMenuOpen ? (
+              <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+            ) : (
+              <Bars3Icon className="h-6 w-6" aria-hidden="true" />
+            )}
           </button>
         </div>
-        <div className="hidden lg:flex lg:gap-x-8 items-center">
-          {navigation.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              className="text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors duration-200"
-            >
-              {item.name}
-            </a>
-          ))}
-          <a
-            href="#"
-            className="rounded-full bg-[var(--primary-accent)] px-5 py-2 text-sm font-medium text-white shadow-sm hover:opacity-90 transition-opacity"
-          >
-            Hire Me
-          </a>
-          <div className="pl-4 border-l border-[var(--border-subtle)]">
-             <ThemeToggle />
+      </nav>
+
+      {/* Mobile Menu Dropdown */}
+      {mobileMenuOpen && (
+        <div className="md:hidden border-b-[1.5px] border-[#111111] bg-white px-6 py-5">
+          <div className="flex flex-col space-y-3">
+            {navigation.map((item) => {
+              const isActive = activeNav === item.name;
+              return (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  onClick={() => {
+                    setActiveNav(item.name);
+                    setMobileMenuOpen(false);
+                  }}
+                  className={`inline-flex items-center py-1.5 text-base ${
+                    isActive
+                      ? "font-bold text-[#0D0D0D]"
+                      : "font-medium text-[#666666]"
+                  }`}
+                >
+                  {isActive && (
+                    <span className="mr-2.5 h-2 w-2 rounded-full bg-[#00D67E]" />
+                  )}
+                  {item.name}
+                </a>
+              );
+            })}
           </div>
         </div>
-      </nav>
-      <Dialog
-        open={mobileMenuOpen}
-        onClose={setMobileMenuOpen}
-        className="lg:hidden"
-      >
-        <div className="fixed inset-0 z-50 bg-black/30 backdrop-blur-sm" />
-        <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-[var(--bg-primary)] p-6 sm:max-w-sm ring-1 ring-[var(--border-subtle)]">
-          <div className="flex items-center justify-between">
-            <a href="#" className="-m-1.5 p-1.5">
-               <h2 className="font-bold text-2xl tracking-tighter text-[var(--text-primary)]">ISN.</h2>
-            </a>
-            <button
-              type="button"
-              onClick={() => setMobileMenuOpen(false)}
-              className="-m-2.5 rounded-md p-2.5 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-            >
-              <span className="sr-only">Close menu</span>
-              <XMarkIcon aria-hidden="true" className="size-6" />
-            </button>
-          </div>
-          <div className="mt-6 flow-root">
-            <div className="-my-6 divide-y divide-[var(--border-subtle)]">
-              <div className="space-y-2 py-6">
-                {navigation.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-medium text-[var(--text-primary)] hover:bg-[var(--bg-secondary)]"
-                  >
-                    {item.name}
-                  </a>
-                ))}
-              </div>
-              <div className="py-6">
-                <a
-                  href="#"
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold text-[var(--text-primary)] hover:bg-[var(--bg-secondary)]"
-                >
-                  Hire Me
-                </a>
-              </div>
-            </div>
-          </div>
-        </DialogPanel>
-      </Dialog>
+      )}
     </header>
   );
 }

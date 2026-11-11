@@ -1,107 +1,154 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
+import portfolioData from "../data/portfolio.json";
 
-// Using placeholder icons or real social icons. 
-// Assuming the user wants to keep the same logic but clean up the design.
-const socialLinks = [
-  {
-    id: 1,
-    name: "Linkedin",
-    imageSrc: "https://img.icons8.com/?size=100&id=13930&format=png&color=000000",
-  },
-  {
-    id: 2,
-    name: "Instagram",
-    imageSrc: "https://img.icons8.com/?size=100&id=Xy10Jcu1L2Su&format=png&color=000000",
-  },
-  {
-    id: 3,
-    name: "Github",
-    imageSrc: "https://img.icons8.com/?size=100&id=62856&format=png&color=000000",
-  },
-];
+type TabKey = "education" | "skills" | "experience";
 
-const Profile = "/img/iqbal.JPG";
+const { educations, skills, experiences } = portfolioData;
 
-function About() {
-  const profileRef = useRef<HTMLDivElement | null>(null);
-  const [isVisible, setIsVisible] = useState(false);
+export default function About() {
+  const [activeTab, setActiveTab] = useState<TabKey>("education");
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-        setIsVisible(entry.isIntersecting);
-      },
-      { threshold: 0.2 }
-    );
-
-    if (profileRef.current) observer.observe(profileRef.current);
-    return () => observer.disconnect();
-  }, []);
+  const tabs: { key: TabKey; label: string }[] = [
+    { key: "education", label: "Education" },
+    { key: "skills", label: "Skills" },
+    { key: "experience", label: "Work Experience" },
+  ];
 
   return (
-    <div className="relative bg-[var(--bg-primary)] overflow-hidden py-24 sm:py-32" id="about">
+    <section id="about" className="bg-white py-20 sm:py-28">
+      <div className="mx-auto max-w-[1200px] px-6 lg:px-12">
+        {/* Centered Editorial Manifesto Statement */}
+        <h2 className="mx-auto max-w-[780px] text-center text-2xl sm:text-3xl lg:text-[38px] font-bold tracking-tight text-[#0D0D0D] leading-[1.3]">
+          Design a user-friendly and visual-exciting experience that offers
+          seamless functionality!
+        </h2>
 
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 flex flex-col lg:flex-row-reverse items-center gap-16">
-        
-        {/* Profile Image Section */}
-        <div className="relative flex-1 flex justify-center lg:justify-end w-full max-w-sm lg:max-w-none">
-          <div className="absolute top-0 right-10 w-72 h-72 bg-purple-500/20 rounded-full blur-3xl -z-10"></div>
-          <div className="absolute bottom-10 left-10 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl -z-10"></div>
-          
-          <div
-            ref={profileRef}
-            className={`relative rounded-2xl overflow-hidden shadow-2xl transition-all duration-1000 ease-out transform ${
-              isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"
-            }`}
-          >
-            <div className="aspect-[4/5] w-full max-w-md lg:max-w-sm text-center bg-gray-200">
-               <img
-                src={Profile}
-                alt="Profile"
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
+        {/* Centered Interactive Neo-Brutalist Tab Buttons */}
+        <div
+          role="tablist"
+          aria-label="Credentials tabs"
+          className="mt-10 flex flex-wrap items-center justify-center gap-4 sm:gap-5"
+        >
+          {tabs.map((tab) => {
+            const isActive = activeTab === tab.key;
+            return (
+              <button
+                key={tab.key}
+                type="button"
+                role="tab"
+                aria-selected={isActive}
+                onClick={() => setActiveTab(tab.key)}
+                className={`inline-flex items-center gap-2.5 border-[1.5px] border-[#111111] px-5 py-2.5 text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+                  isActive
+                    ? "bg-[#0D0D0D] text-white shadow-[4px_4px_0px_#00D67E] -translate-y-0.5"
+                    : "bg-white text-[#0D0D0D] shadow-[3px_3px_0px_#111111] hover:bg-[#00D67E] hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_#111111] active:translate-y-0"
+                }`}
+              >
+                <span
+                  className={`h-2 w-2 rounded-full ${
+                    isActive
+                      ? "bg-[#00D67E]"
+                      : "bg-[#111111]"
+                  }`}
+                />
+                {tab.label}
+              </button>
+            );
+          })}
         </div>
 
-        {/* Content Section */}
-        <div className="flex-1 text-left">
-          <h2 className="text-3xl font-bold tracking-tight text-[var(--text-primary)] sm:text-4xl mb-6">About Me</h2>
-          
-          <div className="space-y-6 text-lg text-[var(--text-secondary)] leading-relaxed">
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Inventore reprehenderit sed animi rerum eligendi deleniti officia
-              quae ducimus error! Recusandae, consectetur!
-            </p>
-            <p>
-              Modi officia hic assumenda illo quis sed dolorum porro dignissimos recusandae.
-              Focusing on building intuitive interactions and solid engineering foundations.
-            </p>
-          </div>
+        {/* Summary Paragraph */}
+        <p className="mx-auto mt-8 max-w-[600px] text-center text-sm sm:text-base text-[#666666] leading-[1.75]">
+          {activeTab === "education" &&
+            "I am a Software Engineering graduate from SMKN 01 Slawi and currently pursuing a Bachelor's degree in Information Systems at Universitas Harkat Negeri, providing me with a strong foundation in modern web development."}
+          {activeTab === "skills" &&
+            "Equipped with a modern frontend and fullstack toolkit, I focus on writing clean, maintainable code and translating UI designs into fast, accessible digital products."}
+          {activeTab === "experience" &&
+            "From freelance frontend engineering to enterprise ERP administration, my professional journey blends technical execution with structured problem-solving."}
+        </p>
 
-          <div className="mt-10">
-            <h3 className="text-sm font-semibold text-[var(--text-primary)] mb-4">Connect</h3>
-            <div className="flex gap-4">
-              {socialLinks.map((link) => (
+        {/* Dynamic Tab Content Panel */}
+        <div className="mx-auto mt-10 max-w-[820px]">
+          {activeTab === "education" && (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {educations.map((edu) => (
                 <div
-                  key={link.id}
-                  className="group relative rounded-xl border border-[var(--border-subtle)] p-3 hover:bg-[var(--bg-secondary)] cursor-pointer w-14 h-14 flex items-center justify-center bg-[var(--bg-primary)]"
+                  key={edu.id}
+                  className="border-[1.5px] border-[#111111] bg-white p-6 shadow-[4px_4px_0px_#111111] transition-transform hover:-translate-y-0.5"
                 >
-                  <img
-                    alt={link.name}
-                    src={link.imageSrc}
-                    className="about-icon w-8 h-8 object-contain opacity-70 group-hover:opacity-100"
-                  /> 
+                  <div className="flex items-center justify-between gap-2 mb-3">
+                    <span className="inline-flex items-center gap-1.5 rounded-full border border-[#111111] bg-[#F7F8FA] px-3 py-0.5 text-xs font-semibold text-[#0D0D0D]">
+                      <span className="h-1.5 w-1.5 rounded-full bg-[#00D67E]" />
+                      {edu.period}
+                    </span>
+                    <span className="text-xs font-semibold text-[#00BF70]">
+                      {edu.badge}
+                    </span>
+                  </div>
+                  <h3 className="text-lg font-bold text-[#0D0D0D]">
+                    {edu.institution}
+                  </h3>
+                  <p className="text-sm font-semibold text-[#333333] mt-0.5">
+                    {edu.major}
+                  </p>
+                  <p className="mt-3 text-xs sm:text-sm text-[#666666] leading-relaxed">
+                    {edu.description}
+                  </p>
                 </div>
               ))}
             </div>
-          </div>
+          )}
+
+          {activeTab === "skills" && (
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              {skills.map((skill) => (
+                <div
+                  key={skill.name}
+                  className="group inline-flex items-center gap-2.5 border-[1.5px] border-[#111111] bg-white px-4 py-2.5 shadow-[3px_3px_0px_#111111] transition-all hover:bg-[#00D67E]"
+                >
+                  <span className="h-2 w-2 rounded-full bg-[#00D67E] border border-[#111111] group-hover:bg-white" />
+                  <span className="text-sm font-bold text-[#0D0D0D]">
+                    {skill.name}
+                  </span>
+                  <span className="rounded-full border border-[#111111]/30 bg-[#F7F8FA] px-2 py-0.5 text-[11px] font-medium text-[#666666] group-hover:bg-white group-hover:text-[#0D0D0D]">
+                    {skill.category}
+                  </span>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {activeTab === "experience" && (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {experiences.map((exp) => (
+                <div
+                  key={exp.id}
+                  className="border-[1.5px] border-[#111111] bg-white p-6 shadow-[4px_4px_0px_#111111] transition-transform hover:-translate-y-0.5"
+                >
+                  <div className="flex items-center justify-between gap-2 mb-3">
+                    <span className="inline-flex items-center gap-1.5 rounded-full border border-[#111111] bg-[#F7F8FA] px-3 py-0.5 text-xs font-semibold text-[#0D0D0D]">
+                      <span className="h-1.5 w-1.5 rounded-full bg-[#00D67E]" />
+                      {exp.period}
+                    </span>
+                  </div>
+                  <h3 className="text-lg font-bold text-[#0D0D0D]">
+                    {exp.role}
+                  </h3>
+                  <p className="text-sm font-semibold text-[#333333] mt-0.5">
+                    {exp.company}
+                  </p>
+                  <p className="mt-2.5 text-xs sm:text-sm text-[#666666] leading-relaxed">
+                    {exp.description}
+                  </p>
+                  <p className="mt-3 pt-3 border-t border-[#E4E4E7] text-xs font-semibold text-[#0D0D0D]">
+                    {exp.stack}
+                  </p>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
-    </div>
+    </section>
   );
 }
-
-export default About;

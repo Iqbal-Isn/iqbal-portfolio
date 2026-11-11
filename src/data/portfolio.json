@@ -1,0 +1,106 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "name": "Company Profile Fabrikasi Logam",
+      "imageSrc": "/img/fabrication-portfolio.webp",
+      "description": "Website profil modern untuk perusahaan pengelasan dan pembuatan logam, menampilkan layanan fabrikasi, galeri proyek, dan fasilitas workshop.",
+      "techStack": ["Astro.js", "Tailwind CSS", "TypeScript"],
+      "githubUrl": "",
+      "liveUrl": "https://factory-compro.vercel.app/"
+    },
+    {
+      "id": 2,
+      "name": "Company Profile Skincare Brand",
+      "imageSrc": "/img/skincare-portfolio.webp",
+      "description": "Website profil elegan untuk brand skincare dengan katalog produk terstruktur, penjelasan kandungan ingredients, dan tampilan responsif.",
+      "techStack": ["Astro.js", "Tailwind CSS", "Responsive UI"],
+      "githubUrl": "",
+      "liveUrl": "https://skincare-compro.vercel.app/"
+    },
+    {
+      "id": 3,
+      "name": "Company Profile Coffee Shop",
+      "imageSrc": "/img/coffee-portfolio.webp",
+      "description": "Website profil estetik untuk kedai kopi dengan showcase menu interaktif, galeri suasana coffee shop, dan penunjuk lokasi cabang.",
+      "techStack": ["Astro.js", "Tailwind CSS", "Modern Web"],
+      "githubUrl": "",
+      "liveUrl": "https://coffee-shop-compro.vercel.app/"
+    },
+    {
+      "id": 4,
+      "name": "Company Profile Bakery Store",
+      "imageSrc": "/img/bakery-portfolio.webp",
+      "description": "Website profil toko roti dan kue dengan katalog produk visual, informasi pemesanan langsung, dan performa tinggi (Lighthouse 100).",
+      "techStack": ["Astro.js", "Tailwind CSS", "High Performance"],
+      "githubUrl": "",
+      "liveUrl": "https://bakery-compro.vercel.app/"
+    },
+    {
+      "id": 5,
+      "name": "Landing Page Les TOEFL",
+      "imageSrc": "/img/course-portfolio.webp",
+      "description": "Halaman program persiapan TOEFL lengkap dengan kurikulum terstruktur, profil instruktur terpercaya, dan form registrasi kelas.",
+      "techStack": ["Astro.js", "Tailwind CSS", "Conversion UI"],
+      "githubUrl": "",
+      "liveUrl": ""
+    },
+    {
+      "id": 6,
+      "name": "Travel Management System",
+      "imageSrc": "/img/rentcar-portfolio.webp",
+      "description": "Website profil layanan rental kendaraan dengan katalog daftar armada mobil, transparansi tarif sewa per unit, dan fitur pesan cepat.",
+      "techStack": ["Laravel", "Tailwind CSS", "React"],
+      "githubUrl": "https://github.com/Iqbal-Isn/travel-system.git",
+      "liveUrl": ""
+    }
+  ],
+  "educations": [
+    {
+      "id": 1,
+      "institution": "Universitas Harkat Negeri",
+      "major": "S1 Sistem Informasi",
+      "period": "2025 – 2029",
+      "badge": "Currently Studying",
+      "description": "Focusing on Software Engineering, Modern Web Development, and Database Management Systems."
+    },
+    {
+      "id": 2,
+      "institution": "SMKN 01 Slawi",
+      "major": "Rekayasa Perangkat Lunak (RPL)",
+      "period": "2019 – 2022",
+      "badge": "GPA: 85.07 / 100",
+      "description": "Studied Object-Oriented Programming, Web Application Development, and Relational Databases."
+    }
+  ],
+  "skills": [
+    { "name": "Astro.js", "category": "Frontend" },
+    { "name": "React.js", "category": "Frontend" },
+    { "name": "TypeScript", "category": "Language" },
+    { "name": "JavaScript (ES6+)", "category": "Language" },
+    { "name": "Tailwind CSS", "category": "Styling" },
+    { "name": "Laravel", "category": "Backend" },
+    { "name": "PHP", "category": "Backend" },
+    { "name": "Bootstrap", "category": "Styling" },
+    { "name": "Figma", "category": "UI/UX Design" },
+    { "name": "Git & GitHub", "category": "Workflow" }
+  ],
+  "experiences": [
+    {
+      "id": 1,
+      "company": "PT. Integrasi Teknologi Unggas",
+      "role": "Admin Unit (Fulltime)",
+      "period": "Aug 2023 – Feb 2025",
+      "stack": "ERP Administration • Google Sheets • Microsoft Office",
+      "description": "Managed operational data workflows, ERP system records, and cross-unit reporting with high accuracy."
+    },
+    {
+      "id": 2,
+      "company": "Ssebowa",
+      "role": "Junior Front End Developer (Freelance)",
+      "period": "Dec 2022 – Feb 2023",
+      "stack": "ReactJS • JavaScript • HTML5 • CSS3",
+      "description": "Collaborated with the product team to build responsive frontend interfaces and reusable UI components."
+    }
+  ]
+}

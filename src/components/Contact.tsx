@@ -1,6 +1,5 @@
-"use client";
-
 import { useState } from "react";
+import SelectionBadge from "./SelectionBadge";
 
 export default function Contact() {
   const [isLoading, setIsLoading] = useState(false);
@@ -38,7 +37,7 @@ export default function Contact() {
           message: "Oops! There was a problem submitting your form.",
         });
       }
-    } catch (error) {
+    } catch {
       setStatus({
         type: "error",
         message: "Failed to send message. Please try again.",
@@ -49,125 +48,172 @@ export default function Contact() {
   };
 
   return (
-    <div className="isolate bg-[var(--bg-primary)] py-24 sm:py-32" id="contact">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          
-          {/* Contact Info */}
-          <div>
-            <h2 className="text-3xl font-bold tracking-tight text-[var(--text-primary)] sm:text-4xl mb-6">Contact</h2>
-            <p className="text-lg leading-8 text-[var(--text-secondary)] mb-8">
-              Sunt vel labore necessitatibus? I'm always open to discussing new projects, creative ideas or opportunities to be part of your visions.
+    <section id="contact" className="bg-white py-20 sm:py-28">
+      <div className="mx-auto max-w-[1200px] px-6 lg:px-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          {/* Left Column: Info */}
+          <div className="lg:col-span-5">
+            <div className="mb-4">
+              <SelectionBadge>Get In Touch</SelectionBadge>
+            </div>
+            <h2 className="text-2xl sm:text-3xl lg:text-[36px] font-bold tracking-tight text-[#0D0D0D] leading-[1.2] mb-5">
+              Let&apos;s Discuss Your Next Project
+            </h2>
+            <p className="text-sm sm:text-base text-[#666666] leading-relaxed mb-8">
+              I&apos;m always open to discussing web development work, UI/UX
+              design collaborations, or opportunities to bring your ideas to
+              life.
             </p>
-            <a
-              href="mailto:iqbalissn20@gmail.com"
-              className="text-lg font-medium text-[var(--text-primary)] hover:text-[var(--primary-accent)] transition-colors inline-flex items-center gap-3"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
-              </svg>
-              iqbalissn20@gmail.com
-            </a>
+
+            <div className="space-y-4">
+              <a
+                href="mailto:iqbalissn20@gmail.com"
+                className="group flex items-center gap-4 border-[1.5px] border-[#111111] bg-[#F7F8FA] p-4 shadow-[4px_4px_0px_#111111] transition-transform hover:-translate-y-0.5"
+              >
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md border-[1.5px] border-[#111111] bg-[#00D67E] text-[#0D0D0D]">
+                  <svg
+                    className="w-5 h-5"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                    />
+                  </svg>
+                </span>
+                <div>
+                  <span className="block text-xs font-semibold text-[#666666]">
+                    Email Address
+                  </span>
+                  <span className="text-sm font-bold text-[#0D0D0D] group-hover:text-[#00BF70] transition-colors">
+                    iqbalissn20@gmail.com
+                  </span>
+                </div>
+              </a>
+            </div>
           </div>
 
-          {/* Form */}
+          {/* Right Column: Neo-Brutalist Form */}
           <form
             action="https://formspree.io/f/xpwygzqk"
             method="POST"
             onSubmit={handleSubmit}
-            className="flex-1"
+            className="lg:col-span-7 border-[1.5px] border-[#111111] bg-white p-6 sm:p-8 shadow-[6px_6px_0px_#111111]"
           >
             {status.type && (
               <div
-                className={`mb-6 p-4 rounded-lg text-sm ${
+                className={`mb-6 border-[1.5px] border-[#111111] p-3.5 text-xs sm:text-sm font-semibold ${
                   status.type === "success"
-                    ? "bg-green-500/10 border border-green-500/20 text-green-600 dark:text-green-400"
-                    : "bg-red-500/10 border border-red-500/20 text-red-600 dark:text-red-400"
+                    ? "bg-[#00D67E]/20 text-[#0D0D0D]"
+                    : "bg-red-100 text-red-800"
                 }`}
               >
                 {status.message}
               </div>
             )}
 
-            <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
+            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
               <div>
-                <label htmlFor="firstName" className="block text-sm font-semibold leading-6 text-[var(--text-primary)]">
-                  First name
+                <label
+                  htmlFor="firstName"
+                  className="block text-xs font-bold uppercase tracking-wider text-[#0D0D0D] mb-2"
+                >
+                  First Name
                 </label>
-                <div className="mt-2.5">
-                  <input
-                    id="firstName"
-                    name="firstName"
-                    type="text"
-                    required
-                    autoComplete="given-name"
-                    className="block w-full rounded-md border-0 px-3.5 py-2 text-[var(--text-primary)] bg-[var(--bg-secondary)] shadow-sm ring-1 ring-inset ring-[var(--border-subtle)] placeholder:text-[var(--text-secondary)] focus:ring-2 focus:ring-inset focus:ring-[var(--primary-accent)] sm:text-sm sm:leading-6 transition-all"
-                    placeholder="John"
-                  />
-                </div>
+                <input
+                  id="firstName"
+                  name="firstName"
+                  type="text"
+                  required
+                  autoComplete="given-name"
+                  placeholder="Iqbal"
+                  className="block w-full border-[1.5px] border-[#111111] bg-[#F7F8FA] px-3.5 py-2.5 text-sm text-[#0D0D0D] placeholder:text-[#8E8E93] focus:bg-white focus:outline-none focus:shadow-[3px_3px_0px_#00D67E] transition-all"
+                />
               </div>
+
               <div>
-                <label htmlFor="lastName" className="block text-sm font-semibold leading-6 text-[var(--text-primary)]">
-                  Last name
+                <label
+                  htmlFor="lastName"
+                  className="block text-xs font-bold uppercase tracking-wider text-[#0D0D0D] mb-2"
+                >
+                  Last Name
                 </label>
-                <div className="mt-2.5">
-                  <input
-                    id="lastName"
-                    name="lastName"
-                    type="text"
-                    required
-                    autoComplete="family-name"
-                    className="block w-full rounded-md border-0 px-3.5 py-2 text-[var(--text-primary)] bg-[var(--bg-secondary)] shadow-sm ring-1 ring-inset ring-[var(--border-subtle)] placeholder:text-[var(--text-secondary)] focus:ring-2 focus:ring-inset focus:ring-[var(--primary-accent)] sm:text-sm sm:leading-6 transition-all"
-                    placeholder="Doe"
-                  />
-                </div>
-              </div>
-              <div className="sm:col-span-2">
-                <label htmlFor="email" className="block text-sm font-semibold leading-6 text-[var(--text-primary)]">
-                  Email
-                </label>
-                <div className="mt-2.5">
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    required
-                    autoComplete="email"
-                    className="block w-full rounded-md border-0 px-3.5 py-2 text-[var(--text-primary)] bg-[var(--bg-secondary)] shadow-sm ring-1 ring-inset ring-[var(--border-subtle)] placeholder:text-[var(--text-secondary)] focus:ring-2 focus:ring-inset focus:ring-[var(--primary-accent)] sm:text-sm sm:leading-6 transition-all"
-                    placeholder="john@example.com"
-                  />
-                </div>
+                <input
+                  id="lastName"
+                  name="lastName"
+                  type="text"
+                  required
+                  autoComplete="family-name"
+                  placeholder="Herlambang"
+                  className="block w-full border-[1.5px] border-[#111111] bg-[#F7F8FA] px-3.5 py-2.5 text-sm text-[#0D0D0D] placeholder:text-[#8E8E93] focus:bg-white focus:outline-none focus:shadow-[3px_3px_0px_#00D67E] transition-all"
+                />
               </div>
 
               <div className="sm:col-span-2">
-                <label htmlFor="message" className="block text-sm font-semibold leading-6 text-[var(--text-primary)]">
+                <label
+                  htmlFor="email"
+                  className="block text-xs font-bold uppercase tracking-wider text-[#0D0D0D] mb-2"
+                >
+                  Email
+                </label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  required
+                  autoComplete="email"
+                  placeholder="you@example.com"
+                  className="block w-full border-[1.5px] border-[#111111] bg-[#F7F8FA] px-3.5 py-2.5 text-sm text-[#0D0D0D] placeholder:text-[#8E8E93] focus:bg-white focus:outline-none focus:shadow-[3px_3px_0px_#00D67E] transition-all"
+                />
+              </div>
+
+              <div className="sm:col-span-2">
+                <label
+                  htmlFor="message"
+                  className="block text-xs font-bold uppercase tracking-wider text-[#0D0D0D] mb-2"
+                >
                   Message
                 </label>
-                <div className="mt-2.5">
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={4}
-                    required
-                    className="block w-full rounded-md border-0 px-3.5 py-2 text-[var(--text-primary)] bg-[var(--bg-secondary)] shadow-sm ring-1 ring-inset ring-[var(--border-subtle)] placeholder:text-[var(--text-secondary)] focus:ring-2 focus:ring-inset focus:ring-[var(--primary-accent)] sm:text-sm sm:leading-6 transition-all"
-                    placeholder="Tell me about your project..."
-                    defaultValue={""}
-                  />
-                </div>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={4}
+                  required
+                  placeholder="Tell me about your project idea..."
+                  className="block w-full border-[1.5px] border-[#111111] bg-[#F7F8FA] px-3.5 py-2.5 text-sm text-[#0D0D0D] placeholder:text-[#8E8E93] focus:bg-white focus:outline-none focus:shadow-[3px_3px_0px_#00D67E] transition-all"
+                />
               </div>
             </div>
-            <div className="mt-10">
+
+            <div className="mt-6">
               <button
                 type="submit"
                 disabled={isLoading}
-                className="block w-full rounded-md bg-[var(--text-primary)] px-3.5 py-2.5 text-center text-sm font-semibold text-[var(--bg-primary)] shadow-sm hover:bg-[var(--text-secondary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--text-primary)] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                className="btn-brutalist w-full sm:w-auto disabled:opacity-50"
               >
-                {isLoading ? "Sending..." : "Let's talk"}
+                <span>{isLoading ? "Sending..." : "Send Message"}</span>
+                <svg
+                  className="w-4 h-4 text-[#00D67E]"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2.5}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M7 17L17 7M17 7H8M17 7V16"
+                  />
+                </svg>
               </button>
             </div>
           </form>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

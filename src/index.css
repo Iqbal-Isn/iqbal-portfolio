@@ -1,84 +1,91 @@
 @import "tailwindcss";
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-
 :root {
-  /* Light Mode (Linear-ish Light) */
   --bg-primary: #ffffff;
-  --bg-secondary: #f7f8f8;
-  --text-primary: #18181b;
-  --text-secondary: #71717a;
+  --bg-secondary: #f7f8fa;
+  --bg-dark: #0d0d0d;
+  --accent-primary: #00d67e;
+  --accent-hover: #00bf70;
+  --text-primary: #0d0d0d;
+  --text-secondary: #666666;
+  --text-muted: #8e8e93;
+  --text-inverse: #ffffff;
+  --border-strong: #111111;
   --border-subtle: #e4e4e7;
-  --glass-bg: rgba(255, 255, 255, 0.7);
-  --glass-border: rgba(228, 228, 231, 0.5);
-  --primary-accent: #5e6ad2; /* Linear purple-ish blue */
 }
 
-/* Dark Mode (Linear Dark) */
-[data-theme="dark"] {
-  --bg-primary: #0f1012; /* Very dark grey, almost black */
-  --bg-secondary: #1a1b1e;
-  --text-primary: #ededef;
-  --text-secondary: #a1a1aa;
-  --border-subtle: #27272a;
-  --glass-bg: rgba(15, 16, 18, 0.7);
-  --glass-border: rgba(39, 39, 42, 0.5);
-  --primary-accent: #5e6ad2;
-}
-*{
+* {
   scroll-behavior: smooth;
 }
 
 body {
-  font-family: "Inter", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, sans-serif;
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  transition: background-color 0.3s ease, color 0.3s ease;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  background: var(--bg-primary);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--border-subtle);
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--text-secondary);
-}
-
-.title-font {
-  font-family: "Inter", sans-serif; /* Unifying font for cleaner look */
+/* Custom Neo-Brutalist Primary CTA Button */
+.btn-brutalist {
+  background-color: var(--bg-dark);
+  color: var(--text-inverse);
   font-weight: 600;
-  letter-spacing: -0.02em;
+  font-size: 0.875rem;
+  line-height: 1;
+  padding: 0.875rem 1.375rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1.5px solid var(--border-strong);
+  box-shadow: 4px 4px 0px var(--accent-primary);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  cursor: pointer;
 }
 
-.glass {
-  background: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--glass-border);
+.btn-brutalist:hover {
+  transform: translate(-1.5px, -1.5px);
+  box-shadow: 6px 6px 0px var(--accent-primary);
 }
 
-.card-hover {
-  transition: all 0.2s ease-in-out;
-}
-.card-hover:hover {
-  transform: translateY(-2px);
-  border-color: var(--text-secondary);
+.btn-brutalist:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1.5px 1.5px 0px var(--accent-primary);
 }
 
-/* Global Tech Icon Styling */
-.tech-icon {
-  transition: filter 0.3s ease, opacity 0.3s ease;
-  /* Optional: grayscale by default in light mode if desired, but user removed inline style, so we leave it raw */
+/* Infinite Marquee Animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
-[data-theme="dark"] .tech-icon {
-  filter: invert(1);
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 24s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Slow Spin for Circular Scroll Badge */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 18s linear infinite;
 }
