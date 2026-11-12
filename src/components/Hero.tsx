@@ -20,17 +20,17 @@ export default function Hero() {
           <div className="lg:col-span-7 text-left">
             <div className="mb-6">
               <SelectionBadge>
-                Hi everyone 👋, I&apos;m Iqbal Isnaeni
+                Hi everyone!, I&apos;m Iqbal Isnaeni
               </SelectionBadge>
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-[56px] font-bold tracking-tight text-[#0D0D0D] leading-[1.14] mb-6">
-              Frontend Developer <br />
+              Web Developer <br />
               Based in Indonesia
             </h1>
 
             <p className="text-sm sm:text-base text-[#666666] leading-[1.7] max-w-[470px] mb-9">
-              I&apos;m a creative frontend developer &amp; UI/UX enthusiast
+              I&apos;m a creative Web developer &amp; UI/UX enthusiast
               passionate about crafting web applications that not only meet
               functional requirements but also delight users and evoke seamless
               digital experiences.
@@ -147,7 +147,7 @@ export default function Hero() {
                 className="absolute -top-3 -left-9 sm:-left-12 w-12 h-8 text-[#0D0D0D] z-20 pointer-events-none"
                 viewBox="0 0 56 32"
                 fill="none"
-                 aria-hidden="true"
+                aria-hidden="true"
               >
                 <path
                   d="M3 26L14 7L27 22L39 6L52 18"
