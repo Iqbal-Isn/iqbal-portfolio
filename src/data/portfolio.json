@@ -88,6 +88,14 @@
   "experiences": [
     {
       "id": 1,
+      "company": "PT. Prosperra Farms Asia",
+      "role": "Admin Unit (Fulltime)",
+      "period": "Apr 2026 – Okt 2026",
+      "stack": "ERP Administration • Google Sheets • Microsoft Office",
+      "description": "Managed operational data workflows, ERP system records, and cross-unit reporting with high accuracy."
+    },
+    {
+      "id": 2,
       "company": "PT. Integrasi Teknologi Unggas",
       "role": "Admin Unit (Fulltime)",
       "period": "Aug 2023 – Feb 2025",
@@ -95,7 +103,7 @@
       "description": "Managed operational data workflows, ERP system records, and cross-unit reporting with high accuracy."
     },
     {
-      "id": 2,
+      "id": 3,
       "company": "Ssebowa",
       "role": "Junior Front End Developer (Freelance)",
       "period": "Dec 2022 – Feb 2023",
